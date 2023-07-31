@@ -8,9 +8,9 @@ services:
     depends_on:
       - saltcorn-db
     command: "serve"
-    restart: always
+    restart: unless-stopped
     ports: 
-      - "3000:3000"
+      - "8200:3000"
     environment:
       - SALTCORN_SESSION_SECRET=${SALTCORN_SECRET}
       - PGHOST=saltcorn-db
@@ -21,7 +21,7 @@ services:
   saltcorn-db:
     image: postgres:13-alpine
     container_name: saltcorn-db
-    restart: always
+    restart: unless-stopped
     volumes:
       - ./data:/var/lib/postgresql/data 
       - ./docker-entrypoint-initdb.sql:/docker-entrypoint-initdb.d/init.sql 
