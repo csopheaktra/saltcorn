@@ -1,2 +1,2 @@
 # saltcorn
-My Saltcorn compose.
+My compose for Saltcorn.
